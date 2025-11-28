@@ -1,0 +1,100 @@
+<?php
+// Configuración para el servicio de VUELOS (BD separada)
+$host = 'db';
+$db   = 'viajego_vuelos'; // Usamos la base de datos de vuelos
+$user = 'user_docker';
+$pass = 'password_segura'; 
+$charset = 'utf8mb4';
+
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
+
+$vuelos = [];
+$error_message = '';
+
+try {
+     $pdo = new PDO($dsn, $user, $pass, $options);
+     
+     // Consulta para obtener todos los vuelos
+     $sql = "SELECT codigo_vuelo, origen_iata, destino_iata, fecha_salida, precio, asientos_disponibles FROM vuelos";
+     $stmt = $pdo->query($sql);
+     $vuelos = $stmt->fetchAll();
+     
+} catch (\PDOException $e) {
+     $error_message = "Error de conexión/consulta: " . $e->getMessage();
+}
+
+// Opcional: Iniciar sesión si quieres mostrar la barra de navegación completa
+session_start();
+$is_logged_in = isset($_SESSION['user_id']);
+$user_name = $is_logged_in ? htmlspecialchars($_SESSION['user_name']) : '';
+
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuelos Disponibles | ViajeGO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container mt-5 pt-5">
+        <h1 class="text-center fw-bold mb-4" style="color: var(--color-turquesa);">✈️ Vuelos Disponibles</h1>
+        
+        <?php if (!empty($error_message)): ?>
+            <div class="alert alert-danger text-center"><?php echo $error_message; ?></div>
+        <?php else: ?>
+        
+            <p class="text-secondary text-center mb-5">Mostrando <?php echo count($vuelos); ?> resultados encontrados.</p>
+
+            <table class="table table-hover shadow-sm rounded overflow-hidden">
+                <thead style="background-color: var(--color-gris-pizarra); color: white;">
+                    <tr>
+                        <th scope="col">CÓDIGO</th>
+                        <th scope="col">ORIGEN</th>
+                        <th scope="col">DESTINO</th>
+                        <th scope="col">FECHA SALIDA</th>
+                        <th scope="col">ASIENTOS</th>
+                        <th scope="col">PRECIO</th>
+                        <th scope="col">ACCIÓN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (count($vuelos) > 0): ?>
+                        <?php foreach ($vuelos as $vuelo): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($vuelo['codigo_vuelo']); ?></td>
+                                <td><?php echo htmlspecialchars($vuelo['origen_iata']); ?></td>
+                                <td><?php echo htmlspecialchars($vuelo['destino_iata']); ?></td>
+                                <td><?php echo date('d/m/Y H:i', strtotime($vuelo['fecha_salida'])); ?></td>
+                                <td><?php echo htmlspecialchars($vuelo['asientos_disponibles']); ?></td>
+                                <td class="fw-bold" style="color: var(--color-coral);">
+                                    $<?php echo number_format($vuelo['precio'], 2); ?>
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-primary-custom">Reservar</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="7" class="text-center">No se encontraron vuelos disponibles.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        
+        <?php endif; ?>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

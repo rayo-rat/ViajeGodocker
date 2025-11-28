@@ -1,0 +1,541 @@
+/* Paleta de Colores: Aventura Nocturna (Rojizos + Gris Carbón) */
+:root {
+    --color-fondo-principal: #121212; /* Carbón oscuro (fondo) */
+    --color-fondo-secundario: #1E1E1E; /* Gris carbón medio (secciones, tarjetas) */
+    --color-acento-rojo: #D7263D; /* Rojo coral intenso (botones, CTA) */
+    --color-texto-principal: #F0F0F0; /* Blanco suave (texto) */
+    --color-texto-secundario: #F7A072; /* Durazno claro (acentos, textos secundarios) */
+    
+    /* Variables de Sombra y Borde */
+    --color-borde-suave: #333333; /* Borde oscuro para contraste */
+    --sombra-oscura: rgba(0, 0, 0, 0.6); /* Sombra para elementos en fondos oscuros */
+    --sombra-acento-rojo: rgba(215, 38, 61, 0.3); /* Sombra para acentos rojos */
+}
+
+/* -------------------------------------- */
+/* 1. ESTILOS GENERALES Y FUENTES */
+/* -------------------------------------- */
+body {
+    font-family: 'Open Sans', sans-serif; /* Mantenemos Open Sans por ser legible y moderna */
+    color: var(--color-texto-principal);
+    background-color: var(--color-fondo-principal);
+    background: linear-gradient(to bottom, var(--color-fondo-principal) 0%, #1A1A1A 100%); /* Degradado sutil */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    color: var(--color-texto-principal);
+}
+
+p {
+    color: var(--color-texto-secundario);
+}
+
+a {
+    color: var(--color-texto-secundario); /* Enlaces con el color durazno claro */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: var(--color-acento-rojo); /* Rojo al pasar el ratón */
+    text-decoration: underline;
+}
+
+/* -------------------------------------- */
+/* 2. BARRA DE NAVEGACIÓN Y TOP BAR */
+/* -------------------------------------- */
+.top-bar {
+    background-color: var(--color-fondo-principal); /* Fondo principal para top bar */
+    padding: 8px 0;
+    font-size: 0.85rem;
+    color: var(--color-texto-secundario);
+    border-bottom: 1px solid var(--color-borde-suave);
+}
+.top-bar a {
+    color: var(--color-texto-secundario);
+    margin-left: 15px;
+}
+.top-bar a:hover {
+    color: var(--color-acento-rojo);
+}
+
+.custom-navbar {
+    background-color: var(--color-fondo-secundario) !important; /* Gris carbón medio */
+    box-shadow: 0 2px 8px var(--sombra-oscura); /* Sombra más pronunciada para el nav */
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--color-borde-suave);
+}
+.navbar-brand {
+    font-weight: 800; /* Más negrita para el texto del logo */
+    font-size: 2rem; /* Tamaño más grande para el texto del logo */
+    color: var(--color-texto-principal) !important;
+    display: flex; /* Para alinear el icono y el texto */
+    align-items: center; /* Centrar verticalmente */
+    gap: 10px; /* Espacio entre el icono y el texto */
+    text-shadow: 2px 2px 5px var(--sombra-oscura); /* Sombra al texto del logo */
+}
+
+.navbar-brand i { /* Estilos para el icono del logo */
+    font-size: 1.8rem; /* Tamaño del icono */
+    color: var(--color-acento-rojo); /* Color del icono */
+    text-shadow: 1px 1px 3px rgba(215, 38, 61, 0.5); /* Sombra para el icono */
+}
+
+.navbar-nav .nav-link {
+    color: var(--color-texto-principal) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--color-acento-rojo) !important;
+    background-color: rgba(215, 38, 61, 0.1); /* Fondo rojo muy claro al hover/activo */
+}
+.btn-login, .btn-register {
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 20px; /* Redondo */
+    transition: all 0.3s ease;
+}
+.btn-login {
+    background-color: transparent;
+    border: 1px solid var(--color-borde-suave);
+    color: var(--color-texto-principal);
+}
+.btn-login:hover {
+    background-color: var(--color-acento-rojo);
+    border-color: var(--color-acento-rojo);
+    color: var(--color-fondo-principal);
+}
+.btn-register {
+    background-color: var(--color-acento-rojo);
+    border: 1px solid var(--color-acento-rojo);
+    color: var(--color-fondo-principal); /* Texto oscuro para el botón rojo */
+    margin-left: 10px;
+}
+.btn-register:hover {
+    background-color: #bb2033; /* Un rojo más oscuro al hover */
+    border-color: #bb2033;
+}
+
+
+/* -------------------------------------- */
+/* 3. HERO SECTION */
+/* -------------------------------------- */
+.hero-section {
+    background-image: linear-gradient(to right, rgba(18, 18, 18, 0.8), rgba(30, 30, 30, 0.85)), url('img/hero_background.jpg.png');
+    background-size: cover;
+    background-position: center 30%; /* Ajuste vertical para centrar el horizonte */
+    background-attachment: scroll;
+    color: var(--color-texto-principal);
+    padding: 120px 0;
+    min-height: 500px; /* Altura ligeramente aumentada */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: inset 0 -10px 15px -8px var(--sombra-oscura);
+    border-radius: 0 0 20px 20px;
+}
+.hero-section h1 {
+    font-size: 3.5rem; /* Aumentado */
+    font-weight: 900;
+    text-shadow: 2px 2px 8px var(--sombra-oscura); /* Sombra más fuerte */
+    color: var(--color-texto-principal);
+    margin-bottom: 15px;
+}
+.hero-section p.lead {
+    font-size: 1.4rem; /* Aumentado */
+    font-weight: 400;
+    color: var(--color-texto-secundario); /* Durazno claro para el lead */
+    margin-bottom: 30px;
+}
+.hero-section .btn-hero-primary { 
+    background-color: var(--color-acento-rojo);
+    border-color: var(--color-acento-rojo);
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px var(--sombra-acento-rojo);
+    color: var(--color-fondo-principal); /* Texto oscuro en el botón rojo */
+}
+.hero-section .btn-hero-primary:hover {
+    background-color: #bb2033;
+    border-color: #bb2033;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(215, 38, 61, 0.5);
+}
+.hero-section .btn-hero-secondary { 
+    background-color: transparent;
+    border: 2px solid var(--color-texto-principal); /* Borde blanco suave */
+    color: var(--color-texto-principal);
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-left: 15px;
+    transition: all 0.3s ease;
+}
+.hero-section .btn-hero-secondary:hover {
+    background-color: var(--color-texto-principal);
+    color: var(--color-fondo-principal); /* Fondo carbón */
+    border-color: var(--color-texto-principal);
+    transform: translateY(-2px);
+}
+
+/* -------------------------------------- */
+/* 3.1 BARRA DE BÚSQUEDA HERO (NUEVO) */
+/* -------------------------------------- */
+
+.hero-search-container {
+    /* Fondo semitransparente para dar contraste contra la imagen */
+    background-color: rgba(30, 30, 30, 0.9); 
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px var(--sombra-oscura);
+    border: 1px solid var(--color-borde-suave);
+    max-width: 800px; /* Limitar ancho para centrar */
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.hero-search-container .form-control {
+    border-radius: 8px 0 0 8px !important;
+    border: 1px solid var(--color-borde-suave);
+    background-color: var(--color-fondo-principal);
+    color: var(--color-texto-principal);
+    padding: 15px 20px; /* Aumentar padding */
+    font-size: 1.05rem;
+    height: 55px; /* Altura uniforme */
+}
+
+.hero-search-container .form-control::placeholder {
+    color: var(--color-texto-principal) !important; /* Usar blanco principal para visibilidad */
+    opacity: 0.5; /* Opacidad para indicar placeholder */
+}
+
+.hero-search-container .btn-hero-search {
+    background-color: var(--color-acento-rojo);
+    border-color: var(--color-acento-rojo);
+    color: var(--color-fondo-principal);
+    border-radius: 0 8px 8px 0 !important;
+    padding: 15px 25px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    height: 55px; /* Altura uniforme */
+}
+.hero-search-container .btn-hero-search:hover {
+    background-color: #bb2033;
+    border-color: #bb2033;
+}
+
+
+/* -------------------------------------- */
+/* 4. CATÁLOGO NACIONAL */
+/* -------------------------------------- */
+.container.mt-5.pt-5 {
+    padding-top: 60px !important;
+    margin-top: 0 !important;
+}
+h2.fw-bold.mb-1 {
+    font-size: 2.2rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 8px !important;
+    font-weight: 800;
+}
+p.text-secondary.mb-5 {
+    font-size: 1rem;
+    color: var(--color-texto-secundario) !important; /* Durazno claro */
+    margin-bottom: 40px !important;
+}
+
+
+/* Pestañas del Catálogo exactas */
+.nav-pills-custom .nav-item {
+    margin: 0 5px;
+}
+.nav-pills-custom .nav-link {
+    background-color: var(--color-fondo-principal);
+    border: 1px solid var(--color-borde-suave);
+    color: var(--color-texto-secundario); /* Durazno claro */
+    font-weight: 600;
+    padding: 10px 25px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 5px var(--sombra-oscura);
+}
+.nav-pills-custom .nav-link:hover {
+    color: var(--color-acento-rojo);
+    border-color: var(--color-acento-rojo);
+    box-shadow: 0 4px 10px var(--sombra-acento-rojo);
+    transform: translateY(-2px);
+}
+.nav-pills-custom .nav-link.active {
+    color: var(--color-fondo-principal); /* Texto oscuro en el botón activo */
+    background-color: var(--color-acento-rojo);
+    border-color: var(--color-acento-rojo);
+    box-shadow: 0 4px 10px var(--sombra-acento-rojo);
+    transform: translateY(-2px);
+}
+.nav-pills-custom .nav-link.active .badge {
+    background-color: var(--color-fondo-principal) !important; /* Fondo del badge oscuro */
+    color: var(--color-acento-rojo) !important; /* Texto del badge rojo */
+}
+
+/* ESTILO DE LAS TARJETAS (CARDS) exacto */
+.paquete-card {
+    min-height: 480px;
+    border: 1px solid var(--color-borde-suave);
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: var(--color-fondo-secundario); /* Gris carbón medio para tarjetas */
+    box-shadow: 0 4px 15px var(--sombra-oscura);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.paquete-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--sombra-oscura);
+}
+.paquete-card .card-img-top {
+    height: 180px;
+    object-fit: cover;
+    width: 100%;
+    border-bottom: 1px solid var(--color-borde-suave);
+}
+.paquete-card .card-body {
+    padding: 20px;
+    text-align: left;
+}
+.paquete-card .card-body .small-tag {
+    font-size: 0.8rem;
+    color: var(--color-texto-secundario); /* Durazno claro para el tag */
+    margin-bottom: 5px;
+    display: block;
+}
+.paquete-card .card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--color-texto-principal);
+}
+.paquete-card .card-text-desc {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--color-texto-secundario); /* Durazno claro */
+    min-height: 40px;
+}
+
+.paquete-card .card-footer-custom {
+    padding: 15px 20px;
+    background-color: var(--color-fondo-principal); /* Fondo oscuro para el footer de la tarjeta */
+    border-top: 1px solid var(--color-borde-suave);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+.paquete-card .card-footer-custom .price {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--color-acento-rojo); /* Rojo intenso para el precio */
+    margin-bottom: 5px;
+}
+.paquete-card .card-footer-custom .details-text {
+    font-size: 0.8rem;
+    color: var(--color-texto-secundario); /* Durazno claro */
+}
+.paquete-card .btn-custom-card {
+    background-color: var(--color-acento-rojo);
+    border-color: var(--color-acento-rojo);
+    color: var(--color-fondo-principal); /* Texto oscuro en el botón de la tarjeta */
+    border-radius: 10px;
+    padding: 8px 15px;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 8px var(--sombra-acento-rojo);
+}
+.paquete-card .btn-custom-card:hover {
+    background-color: #bb2033;
+    border-color: #bb2033;
+    transform: translateY(-2px);
+}
+
+/* Placeholders de íconos en tarjetas para Hoteles/Vuelos/Autobuses */
+.paquete-card .icon-placeholder {
+    height: 180px;
+    background-color: var(--color-fondo-principal); /* Fondo oscuro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: var(--color-texto-secundario); /* Durazno claro para los iconos */
+    border-bottom: 1px solid var(--color-borde-suave);
+}
+
+
+/* -------------------------------------- */
+/* 5. FORMULARIO ARMA TU PAQUETE PERSONALIZADO (MEJORADO) */
+/* -------------------------------------- */
+.form-paquete-personalizado {
+    background-color: var(--color-fondo-secundario); /* Gris carbón medio */
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 6px 20px var(--sombra-oscura);
+    border: 1px solid var(--color-borde-suave);
+    margin-bottom: 80px;
+}
+.form-paquete-personalizado .form-label {
+    /* CLAVE: Etiquetas en blanco para visibilidad */
+    font-weight: 500;
+    color: var(--color-texto-principal) !important; 
+    font-size: 0.95rem; 
+    margin-bottom: 5px;
+}
+.form-paquete-personalizado .form-control,
+.form-paquete-personalizado .form-select {
+    /* CLAVE: Inputs con fondo más claro para contraste y estilo sofisticado */
+    border-radius: 10px;
+    border: 1px solid var(--color-borde-suave);
+    padding: 12px 18px; 
+    font-size: 1rem;
+    color: var(--color-texto-principal);
+    background-color: #2a2a2a; /* Fondo más claro para los inputs */
+    box-shadow: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.form-paquete-personalizado .form-control:focus,
+.form-paquete-personalizado .form-select:focus {
+    background-color: #333333; /* Color en foco */
+    border-color: var(--color-acento-rojo);
+    box-shadow: 0 0 0 0.25rem rgba(215, 38, 61, 0.25);
+}
+.form-paquete-personalizado .input-group-text {
+    background-color: var(--color-fondo-principal);
+    border: 1px solid var(--color-borde-suave);
+    border-left: none;
+    border-radius: 0 8px 8px 0;
+    color: var(--color-texto-secundario); /* Durazno claro */
+}
+.form-paquete-personalizado .form-check-input {
+    border-radius: 0.25rem;
+    border-color: var(--color-borde-suave);
+}
+.form-paquete-personalizado .btn-primary-custom {
+    background-color: var(--color-acento-rojo);
+    border-color: var(--color-acento-rojo);
+    color: var(--color-fondo-principal); /* Texto oscuro en el botón */
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px var(--sombra-acento-rojo);
+    transition: all 0.3s ease;
+}
+.form-paquete-personalizado .btn-primary-custom:hover {
+    background-color: #bb2033;
+    border-color: #bb2033;
+    transform: translateY(-2px);
+}
+
+/* --- NUEVOS ESTILOS PARA LOGIN/REGISTRO (Global Forms) --- */
+
+/* Contenedor principal de formularios de login/registro para centrado y espaciado */
+.form-card-container {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+/* Estilo de la tarjeta para login/registro */
+.form-card-sophisticated {
+    border: none !important;
+    background-color: var(--color-fondo-secundario) !important; /* Gris carbón medio */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--sombra-oscura);
+}
+.form-card-sophisticated h2 {
+    color: var(--color-acento-rojo) !important; /* Título en color de acento */
+    font-weight: 800 !important;
+}
+.form-card-sophisticated .form-label {
+    /* CLAVE: Etiquetas en blanco para visibilidad */
+    color: var(--color-texto-principal) !important; 
+}
+.form-card-sophisticated .form-text {
+    /* Texto de ayuda en color secundario para visibilidad */
+    color: var(--color-texto-secundario) !important; 
+}
+.form-card-sophisticated .form-control,
+.form-card-sophisticated .form-select {
+    border-radius: 10px;
+    border: 1px solid var(--color-borde-suave);
+    background-color: var(--color-fondo-principal); /* Fondo principal para inputs */
+    color: var(--color-texto-principal);
+    transition: all 0.3s ease;
+}
+.form-card-sophisticated .form-control:focus {
+    border-color: var(--color-acento-rojo);
+    box-shadow: 0 0 0 0.25rem rgba(215, 38, 61, 0.25);
+}
+.form-card-sophisticated .btn-primary-custom {
+    background-color: var(--color-acento-rojo);
+    border-color: var(--color-acento-rojo);
+    color: var(--color-fondo-principal);
+    border-radius: 25px;
+    padding: 12px;
+    font-weight: 700;
+}
+.form-card-sophisticated .btn-primary-custom:hover {
+    background-color: #bb2033;
+    border-color: #bb2033;
+}
+.form-card-sophisticated .alert-link {
+    color: var(--color-texto-principal); /* Enlaces en alertas */
+}
+.form-card-sophisticated p.text-secondary {
+    /* Texto de ayuda general */
+    color: var(--color-texto-principal) !important;
+}
+.form-card-sophisticated a {
+    /* Enlaces específicos de registro/login (usar acento rojo) */
+    color: var(--color-acento-rojo) !important;
+    text-decoration: underline;
+}
+
+/* Enlace Volver a Inicio */
+.back-to-home-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+.back-to-home-link i {
+    margin-right: 5px;
+}
+
+
+/* -------------------------------------- */
+/* 6. FOOTER exacto */
+/* -------------------------------------- */
+footer {
+    background-color: var(--color-fondo-principal); /* Fondo principal para footer */
+    color: var(--color-texto-secundario); /* Durazno claro */
+    padding: 25px 0;
+    text-align: center;
+    font-size: 0.8rem;
+    border-top: 1px solid var(--color-borde-suave);
+}
+footer strong {
+    color: var(--color-texto-principal);
+}
